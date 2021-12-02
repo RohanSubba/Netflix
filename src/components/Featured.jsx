@@ -2,14 +2,96 @@
 import { InfoOutlined, PlayArrow } from '@mui/icons-material'
 import React from 'react'
 import "./featured.scss"
+import styled from '@emotion/styled'
 
-const Featured = ({type}) => {
+const Feature = styled.div`
+    height: 90vh;
+    position: relative;
+`
+
+const Category = styled.div`
+    
+    position: absolute;
+    top: 80px;
+    left: 50px;
+    font-size: 30px;
+    font-weight: 500;
+    color: white;
+    display: flex;
+    align-items: center;
+`
+
+const Select = styled.select`
+    cursor: pointer;
+    background-color: var(--main-color);
+    border: 1px solid white;
+    color: white;
+    margin: 20px;
+`
+
+const Img = styled.img`
+
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+`
+
+const Info = styled.div`
+    width: 35%;
+    position:absolute;
+    left: 50px;
+    bottom: 100px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+`
+const Desc = styled.span`
+    margin: 20px 0px;
+`
+
+const Button = styled.div`
+    display: flex;
+`
+
+const Play = styled.button`
+    padding: 10px 20px;
+    border:none;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: white;
+    color: var(--main-color);
+`
+
+const More = styled.button`
+    padding: 10px 20px;
+    border:none;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 500;
+    margin-right: 10px;
+    cursor: pointer;
+    background-color: gray;
+    color: white;
+`
+
+const FeatureSpan = styled.span`
+    margin-left: 5px;
+`
+
+const Featured = ({ type }) => {
     return (
-        <div className="featured">
+        <Feature>
             {type && (
-                <div className="category">
+                <Category>
                     <span>{type === "movie" ? "Movies" : "Series"} </span>
-                    <select name="genre" id="genre">
+                    <Select name="genre" id="genre">
                         <option >Genre</option>
                         <option value="adventure">Adventure</option>
                         <option value="comedy">Comedy</option>
@@ -24,31 +106,31 @@ const Featured = ({type}) => {
                         <option value="animation">Animation</option>
                         <option value="drama">Drama</option>
                         <option value="document">Document</option>
-                    </select>
-                </div>
+                    </Select>
+                </Category>
             )
 
             }
-            <img width="100%" src="https://wallpaperaccess.com/full/5650450.jpg" alt="" />
-            <div className="info">
+            <Img width="100%" src="https://wallpaperaccess.com/full/5650450.jpg" alt="" />
+            <Info>
                 <h1>Alice in Borderland</h1>
-                <span className="desc">
+                <Desc>
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Nobis natus nulla id laudantium ipsa fugiat ut! Facere tempore dolores perferendis, inventore eos et, ex quisquam, sunt eveniet exercitationem sapiente optio?
-                </span>
-                <div className="buttons">
-                    <button className ="play">
-                        <PlayArrow/>
-                        <span>Play</span>
-                    </button>
-                    <button className ="more">
-                        <InfoOutlined/>
-                        <span>Info</span>
-                        
-                    </button>
-                </div>
-            </div>
+                </Desc>
+                <Button>
+                    <Play>
+                        <PlayArrow />
+                        <FeatureSpan>Play</FeatureSpan>
+                    </Play>
+                    <More>
+                        <InfoOutlined />
+                        <FeatureSpan>Info</FeatureSpan>
 
-        </div>
+                    </More>
+                </Button>
+            </Info>
+
+        </Feature>
     )
 }
 
